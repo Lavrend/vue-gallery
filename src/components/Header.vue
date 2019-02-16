@@ -9,6 +9,7 @@
           :key="item.title"
           :to="item.link"
         )
+          svgicon.header__menu-item-icon(:icon="item.icon" custom)
           span.header__menu-item-label
             | {{ $t(`UI.navMenu.${item.title}`) }}
 
@@ -43,6 +44,7 @@ export default {
   height: $headerHeight;
   min-width: $screenMinWidth;
   text-align: left;
+  box-shadow: $headerShadow;
 
   user-select: none;
 
@@ -96,9 +98,15 @@ export default {
     align-items: center;
     justify-content: center;
 
-    &:hover {
-      opacity: 1;
-    }
+    @include item-rect-hover(false, $indent-sm, $indent-lg);
+  }
+
+  &__menu-item-icon {
+    width: 1em;
+    height: 1em;
+    margin-right: $indent-md;
+    color: $white;
+    fill: $white;
   }
 
   &__menu-item.router-link-exact-active {

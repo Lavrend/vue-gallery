@@ -1,0 +1,68 @@
+// Custom mixins
+
+@mixin item-rect-hover($isReverse, $margin, $indent, $transformDuration: .3s, $opacityDuration: .2s) {
+  &:before, &:after {
+    display: inline-block;
+    opacity: 0;
+    transition: transform $transformDuration, opacity $opacityDuration;
+  }
+
+  @if $isReverse {
+    &:before {
+      content: ']';
+      margin-left: $margin;
+      transform: translateX(-$indent);
+    }
+
+    &:after {
+      content: '[';
+      margin-right: $margin;
+      transform: translateX($indent);
+    }
+  } @else {
+    &:before {
+      content: '[';
+      margin-right: $margin;
+      transform: translateX($indent);
+    }
+
+    &:after {
+      content: ']';
+      margin-left: $margin;
+      transform: translateX(-$indent);
+    }
+  }
+
+  &:hover {
+    opacity: 1;
+
+    &:before, &:after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &.router-link-exact-active {
+    &:hover:before, &:hover:after {
+      opacity: 0;
+    }
+
+    @if $isReverse {
+      &:hover:before {
+        transform: translateX(-$indent);
+      }
+
+      &:hover:after {
+        transform: translateX($indent);
+      }
+    } @else {
+      &:hover:before {
+        transform: translateX($indent);
+      }
+
+      &:hover:after {
+        transform: translateX(-$indent);
+      }
+    }
+  }
+}

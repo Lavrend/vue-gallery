@@ -4,12 +4,14 @@
   },
 
   "UI": {
-    "appName": "App Name",
-    "logo": "Logo brand",
+    "appName": "Images Stock",
+    "logo": "Логотип бренда",
 
     "navMenu": {
-      "home": "Home",
-      "about": "About"
+      "home": "Главная",
+      "gallery": "Галерея",
+      "about": "О проекте",
+      "contacts": "Контакты"
     }
   }
 }
