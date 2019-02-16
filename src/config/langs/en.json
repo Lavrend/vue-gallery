@@ -1,0 +1,15 @@
+{
+  "ERRORS": {
+    "unknown_error": "Something went wrong..."
+  },
+
+  "UI": {
+    "appName": "App Name",
+    "logo": "Logo brand",
+
+    "navMenu": {
+      "home": "Home",
+      "about": "About"
+    }
+  }
+}

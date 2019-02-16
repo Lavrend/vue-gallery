@@ -1,0 +1,15 @@
+{
+  "ERRORS": {
+    "unknown_error": "Что-то пошло не так..."
+  },
+
+  "UI": {
+    "appName": "App Name",
+    "logo": "Логотип бренда",
+
+    "navMenu": {
+      "home": "Главная",
+      "about": "О проекте"
+    }
+  }
+}

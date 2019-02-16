@@ -1,0 +1,120 @@
+$dropDown: cubic-bezier(1, 0, 1, 0);
+$dropUp: cubic-bezier(0, 1, 0, 1);
+
+.transition-fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .2s ease;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-leave,
+  &-enter-to {
+    opacity: 1;
+  }
+}
+
+.transition-scale {
+  &-enter-active,
+  &-leave-active {
+    transition: transform .2s ease;
+    overflow: hidden;
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: scale(0);
+  }
+
+  &-leave,
+  &-enter-to {
+    transform: scale(1);
+  }
+
+  &-move {
+    transition: transform 1s ease;
+  }
+}
+
+.transition-zoom {
+  &-enter-active,
+  &-leave-active {
+    transition: all .3s ease;
+    transform-origin: center;
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: scale(2);
+    opacity: 0;
+  }
+
+  &-leave,
+  &-enter-to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.transition-flip {
+  &-enter-active,
+  &-leave-active {
+    transition: transform .2s ease;
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: rotateX(90deg);
+  }
+
+  &-leave,
+  &-enter-to {
+    transform: rotateX(0);
+  }
+}
+
+.transition-max-height {
+  &-enter-active {
+    overflow: hidden;
+    transition: max-height .2s $dropDown;
+  }
+
+  &-leave-active {
+    overflow: hidden;
+    transition: max-height .2s $dropUp;
+  }
+
+  &-enter,
+  &-leave-to {
+    max-height: 0;
+  }
+
+  &-leave,
+  &-enter-to {
+    max-height: 9999px;
+  }
+}
+
+.transition-rotate {
+  &-enter-active,
+  &-leave-active {
+    transition: transform .2s linear;
+  }
+
+  &-enter {
+    transform: rotate(180deg) scale(0.5);
+  }
+
+  &-leave-to {
+    transform: rotate(-180deg) scale(0.5);
+  }
+
+  &-leave,
+  &-enter-to {
+    transform: rotate(0) scale(1);
+  }
+}

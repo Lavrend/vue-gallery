@@ -1,0 +1,13 @@
+/* eslint-disable */
+require('./angle-down')
+require('./angle-right')
+require('./arrow-down')
+require('./arrow-left')
+require('./arrow-right')
+require('./at')
+require('./cubes')
+require('./empire')
+require('./home')
+require('./images')
+require('./logo')
+require('./menu')
