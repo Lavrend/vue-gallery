@@ -6,8 +6,8 @@
 
     .page-home__content
       .page-home__flex
-        .page-home__flex-title(v-html="$t('HOMEPAGE.title')")
-        .page-home__flex-description(v-html="$t('HOMEPAGE.description')")
+        h1.page-home__flex-title(v-html="$t('HOMEPAGE.title')")
+        p.page-home__flex-description(v-html="$t('HOMEPAGE.description')")
 
         .page-home__flex-buttons
           .page-home__btn.page-home__btn--gallery(
@@ -85,13 +85,14 @@ export default {
   }
 
   &__flex-title {
-    font-size: 60px;
+    margin: $indent-lg 0;
+    font-size: 50px;
+    line-height: 1.2;
   }
 
   &__flex-description {
-    margin-top: $indent-md;
     font-size: 26px;
-    font-style: italic;
+    line-height: 1.2;
   }
 
   &__flex-buttons {
@@ -105,6 +106,7 @@ export default {
     padding: $indent-md;
     margin: 0 $indent-md;
     border: 2px solid $white;
+    white-space: nowrap;
 
     transition: background .5s ease;
     cursor: pointer;
@@ -114,7 +116,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 680px) {
     &__flex-buttons {
       font-size: 16px;
     }
@@ -124,9 +126,29 @@ export default {
     }
   }
 
-  @media screen and (min-width: 681px) and (max-width: 800px) {
+  @media screen and (min-width: 681px) and (max-width: 760px) {
     &__flex-title {
-      font-size: 50px;
+      font-size: 46px;
+    }
+
+    &__flex-description {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (min-width: 581px) and (max-width: 680px) {
+    &__flex-title {
+      font-size: 40px;
+    }
+
+    &__flex-description {
+      font-size: 22px;
+    }
+  }
+
+  @media screen and (min-width: 521px) and (max-width: 580px) {
+    &__flex-title {
+      font-size: 36px;
     }
 
     &__flex-description {
@@ -134,9 +156,9 @@ export default {
     }
   }
 
-  @media screen and (min-width: 541px) and (max-width: 680px) {
+  @media screen and (min-width: 431px) and (max-width: 520px) {
     &__flex-title {
-      font-size: 40px;
+      font-size: 30px;
     }
 
     &__flex-description {
@@ -144,17 +166,7 @@ export default {
     }
   }
 
-  @media screen and (min-width: 401px) and (max-width: 540px) {
-    &__flex-title {
-      font-size: 30px;
-    }
-
-    &__flex-description {
-      font-size: 16px;
-    }
-  }
-
-  @media screen and (max-width: 400px) {
+  @media screen and (min-width: 381px) and (max-width: 430px) {
     &__flex-title {
       font-size: 25px;
     }
@@ -165,6 +177,21 @@ export default {
 
     &__btn {
       width: 120px;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    &__flex-title {
+      font-size: 22px;
+    }
+
+    &__flex-description {
+      font-size: 15px;
+    }
+
+    &__btn {
+      width: 100px;
+      font-size: 14px;
     }
   }
 }

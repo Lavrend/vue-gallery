@@ -20,6 +20,6 @@
     "description": "Я создал этот проект<br/>для <span class='primary-text'>демонстрации</span> возможностей <span class='primary-text'>Vue.js</span>",
 
     "btn_gallery": "Галерея",
-    "btn_about": "О Проекте"
+    "btn_about": "О проекте"
   }
 }
