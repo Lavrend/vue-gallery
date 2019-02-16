@@ -13,5 +13,13 @@
       "about": "О проекте",
       "contacts": "Контакты"
     }
+  },
+
+  "HOMEPAGE": {
+    "title": "Hello, I'm <span class='primary-text'>Dmitriy</span><br/>I'm a front-end developer",
+    "description": "I created this project<br/>to <span class='primary-text'>demonstrate</span> the capabilities of <span class='primary-text'>Vue.js</span>",
+
+    "btn_gallery": "View gallery",
+    "btn_about": "About"
   }
 }

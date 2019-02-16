@@ -4,12 +4,20 @@
   },
 
   "UI": {
-    "appName": "App Name",
+    "appName": "Images Stock",
     "logo": "Логотип бренда",
 
     "navMenu": {
       "home": "Главная",
       "about": "О проекте"
     }
+  },
+
+  "HOMEPAGE": {
+    "title": "Привет, меня зовут <span class='primary-text'>Дмитрий</span><br/>Я front-end разработчик",
+    "description": "Я создал этот проект<br/>для <span class='primary-text'>демонстрации</span> возможностей <span class='primary-text'>Vue.js</span>",
+
+    "btn_gallery": "Галерея",
+    "btn_about": "О Проекте"
   }
 }
