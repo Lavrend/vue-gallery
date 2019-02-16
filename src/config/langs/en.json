@@ -5,13 +5,13 @@
 
   "UI": {
     "appName": "Images Stock",
-    "logo": "Логотип бренда",
+    "logo": "Logo brand",
 
     "navMenu": {
-      "home": "Главная",
-      "gallery": "Галерея",
-      "about": "О проекте",
-      "contacts": "Контакты"
+      "home": "Home",
+      "gallery": "Gallery",
+      "about": "About",
+      "contacts": "Contacts"
     }
   },
 
