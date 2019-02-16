@@ -21,9 +21,21 @@ export default new VueRouter({
     },
 
     {
+      path: '/gallery',
+      name: 'gallery',
+      component: () => import(/* webpackChunkName: 'gallery' */ '@/pages/Gallery.vue'),
+    },
+
+    {
       path: '/about',
       name: 'about',
       component: () => import(/* webpackChunkName: 'about' */ '@/pages/About.vue'),
+    },
+
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: () => import(/* webpackChunkName: 'contacts' */ '@/pages/Contacts.vue'),
     },
 
     {
