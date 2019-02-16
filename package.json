@@ -49,6 +49,7 @@
       "camelcase": "off",
       "import/extensions": "off",
       "object-curly-newline": "off",
+      "object-shorthand": "off",
       "max-len": [
         "off",
         {

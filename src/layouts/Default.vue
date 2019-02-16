@@ -5,16 +5,20 @@
     main.layout-default__content
       transition(name="transition-zoom" mode="out-in")
         slot
+
+    LayoutSidebar.layout-default__sidebar
 </template>
 
 <script>
 import LayoutHeader from '@/components/Header';
+import LayoutSidebar from '@/components/Sidebar';
 
 export default {
   name: 'layout-default',
 
   components: {
     LayoutHeader,
+    LayoutSidebar,
   },
 };
 </script>
@@ -43,6 +47,14 @@ export default {
     color: $white;
 
     overflow-y: auto;
+  }
+
+  &__sidebar {
+    background: $dark-light;
+    box-shadow: $sidebarShadow;
+
+    // Need for display the layer correct (above content layer)
+    z-index: $zIndexContent;
   }
 }
 </style>

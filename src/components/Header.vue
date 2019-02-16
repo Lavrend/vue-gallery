@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import config from '@/config';
 
 import Logo from '@/components/Logo';
@@ -36,16 +37,21 @@ export default {
     LangsBlock,
   },
 
+  computed: {
+    ...mapState('app', [
+      'isSidebarActive',
+    ]),
+  },
+
   data() {
     return {
       menuItems: config.navMenu,
-      isSidebarActive: false,
     };
   },
 
   methods: {
     sidebarToggle() {
-      this.isSidebarActive = !this.isSidebarActive;
+      this.$store.dispatch('app/sidebarToggle');
     },
   },
 };
@@ -164,19 +170,9 @@ export default {
     }
   }
 
-  @media screen and (min-width: 861px) and (max-width: 980px) {
+  @media screen and (min-width: 781px) and (max-width: 980px) {
     &__logo, &__nav-menu {
       font-size: 18px;
-    }
-  }
-
-  @media screen and (min-width: 781px) and (max-width: 860px) {
-    &__logo, &__nav-menu {
-      font-size: 16px;
-    }
-
-    &__lang {
-      font-size: 16px;
     }
   }
 
