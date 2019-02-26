@@ -2,6 +2,11 @@
   section.page-home
     .page-home__background
       .page-home__bg-picture
+      .page-home__bg-stars
+        .page-home__stars-layer.page-home__stars-layer--1
+        .page-home__stars-layer.page-home__stars-layer--2
+        .page-home__stars-layer.page-home__stars-layer--3
+
       .page-home__bg-overlay
 
     .page-home__content
@@ -28,6 +33,29 @@ export default {
 </script>
 
 <style lang="scss">
+$star-sm: 1px;
+$star-md: 2px;
+$star-lg: 3px;
+$stars-layer-size: 1000;
+$stars-duration: 25s;
+
+// for stars layers
+@function multiple-box-shadow($n) {
+  $value: '#{random($stars-layer-size)}px #{random($stars-layer-size)}px #{$white}';
+
+  @for $i from 2 through $n {
+    $value: '#{$value}, #{random($stars-layer-size)}px #{random($stars-layer-size)}px #{$white}';
+  }
+
+  @return unquote($value);
+}
+
+$shadows-sm: multiple-box-shadow(200);
+$shadows-md: multiple-box-shadow(100);
+$shadows-lg: multiple-box-shadow(50);
+
+// ----------------------------------------------------------
+
 .page-home {
   position: relative;
   height: 100%;
@@ -35,38 +63,82 @@ export default {
   text-align: center;
 
   &__background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+    @include absolute-full;
   }
 
   &__bg-picture {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+    @include absolute-full;
 
     background: url('~@/assets/images/bg_homepage.jpeg'), url($bgHomepageBase64);
     background-size: cover;
     background-position: center;
   }
 
+  &__bg-stars {
+    @include absolute-full;
+
+    overflow: hidden;
+  }
+
+  &__stars-layer {
+    background: transparent;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: #{$stars-layer-size}px;
+      background: transparent;
+    }
+  }
+
+  &__stars-layer--1 {
+    width: $star-sm;
+    height: $star-sm;
+    box-shadow: $shadows-sm;
+    animation: animStar $stars-duration linear infinite;
+
+    &:after {
+      width: $star-sm;
+      height: $star-sm;
+      box-shadow: $shadows-sm;
+    }
+  }
+
+  &__stars-layer--2 {
+    width: $star-md;
+    height: $star-md;
+    box-shadow: $shadows-md;
+    animation: animStar ($stars-duration * 2) linear infinite;
+
+    &:after {
+      width: $star-md;
+      height: $star-md;
+      box-shadow: $shadows-md;
+    }
+  }
+
+  &__stars-layer--3 {
+    width: $star-lg;
+    height: $star-lg;
+    box-shadow: $shadows-lg;
+    animation: animStar ($stars-duration * 3) linear infinite;
+
+    &:after {
+      width: $star-lg;
+      height: $star-lg;
+      box-shadow: $shadows-lg;
+    }
+  }
+
   &__bg-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: rgba($black, 0.7);
+    @include absolute-full;
+
+    background: radial-gradient(ellipse at bottom, $blue-8 0%, $blue-9 100%);
+    opacity: 0.7;
   }
 
   &__content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    @include absolute-full;
 
     display: flex;
     flex-direction: column;
@@ -192,6 +264,15 @@ export default {
     &__btn {
       width: 100px;
       font-size: 14px;
+    }
+  }
+
+  @keyframes animStar {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(#{-$stars-layer-size}px);
     }
   }
 }
