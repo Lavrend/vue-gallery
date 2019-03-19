@@ -1,16 +1,26 @@
 <template lang="pug">
-  transition-group.gallery-list(name="transition-scale" tag="div")
+  transition-group.gallery-list(
+    name="transition-scale"
+    tag="div"
+  )
     GalleryItem.gallery-list__item(
-      v-for="item in galleryTiles"
+      v-for="item in items"
       :class="getClasses(item.type)"
-      :key="item.id"
-      :item="item"
+      :key="item._id"
+      :id="item._id"
+      :type="item.type"
+      :title="item.title"
+      :description="item.description"
+      :text="item.text"
+      :image="getImageSrc(item)"
     )
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import GalleryItem from './GalleryItem';
+
+import config from '@/config';
+import GalleryItem from '@/components/Gallery/GalleryItem';
 
 export default {
   name: 'gallery-list',
@@ -20,8 +30,8 @@ export default {
   },
 
   computed: {
-    ...mapState('gallery', [
-      'galleryTiles',
+    ...mapState('articles', [
+      'items',
     ]),
   },
 
@@ -30,6 +40,12 @@ export default {
       return {
         [`gallery-list__item--${type}`]: type !== 'normal',
       };
+    },
+
+    getImageSrc(item) {
+      return item.image === 0
+        ? `${config.IMAGE_URL}&random=${item._id}`
+        : `${config.IMAGE_URL}&image=${item.image}`;
     },
   },
 };

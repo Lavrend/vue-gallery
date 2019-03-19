@@ -1,7 +1,8 @@
 export default {
-  API_HOST: process.env.API_HOST || '/api',
+  API_HOST: process.env.API_HOST || 'https://vue-gallery-server.herokuapp.com',
   DEBUG: process.env.NODE_ENV !== 'production',
   LS_KEY: 'vue_gallery',
+  ARTICLES_PAGE_SIZE: 10,
 
   navMenu: [
     {

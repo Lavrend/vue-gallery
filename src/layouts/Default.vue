@@ -46,7 +46,8 @@ export default {
     min-width: $screenMinWidth;
     color: $white;
 
-    overflow-y: auto;
+    // overflow-y: auto;
+    overflow: hidden;
   }
 
   &__sidebar {

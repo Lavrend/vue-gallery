@@ -1,8 +1,10 @@
-import configApp from './appConfig';
-import configLangs from './langs/configLangs';
+import app from '@/config/appConfig';
+import images from '@/config/imagesStock';
+import langs from '@/config/langs';
 
 const config = Object.assign({},
-  configApp,
-  configLangs);
+  app,
+  images,
+  langs);
 
 export default config;

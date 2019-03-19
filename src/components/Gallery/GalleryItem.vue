@@ -3,21 +3,21 @@
     transition(name="transition-scale" mode="out-in")
       .gallery-item__content(v-show="isReady" @click="onClick")
         img.gallery-item__image(
-          :src="item.image"
-          :alt="`Image for article: ${item.title}`"
+          :src="image"
+          :alt="`Image for article: ${title}`"
           @load="imageOnload")
 
         footer.gallery-item__summary
           h2.gallery-item__titile
-            | {{ item.title }}
+            | {{ title }}
           p.gallery-item__description
-            | {{ item.description }}
+            | {{ description }}
 
         span.gallery-item__read-more
-          | {{ $t('UI.gallery.readMore') }}
+          | {{ $t('GALLERY.readMore') }}
 
     .gallery-item__loading(v-if="!isReady")
-      ui-spinner.gallery-item__spinner
+      uiSpinner.gallery-item__spinner
 </template>
 
 <script>
@@ -27,11 +27,16 @@ export default {
   name: 'gallery-item',
 
   components: {
-    'ui-spinner': uiSpinner,
+    uiSpinner,
   },
 
   props: {
-    item: Object,
+    id: String,
+    type: String,
+    title: String,
+    description: String,
+    text: String,
+    image: String,
   },
 
   data() {
@@ -45,25 +50,11 @@ export default {
       this.isReady = true;
     },
 
-    // getImageBase64() {
-    //   this.$http
-    //     .get(this.getImageSrc(this.id), { responseType: 'arraybuffer', cors: true })
-    //     .then((response) => {
-    //       let image = btoa(
-    //         new Uint8Array(response.data)
-    //           .reduce((data, byte) => data + String.fromCharCode(byte), '')
-    //       );
-
-    //       this.imgSrc = `data:${response.headers['content-type'].toLowerCase()};base64,${image}`;
-    //       this.isReady = true;
-    //     });
-    // },
-
     onClick() {
       this.$router.push({
-        name: 'gallery-item',
+        name: 'gallery-details',
         params: {
-          id: this.item.id,
+          itemId: this.id,
         },
       });
     },

@@ -10,6 +10,7 @@
     "svg": "vsvg -s ./src/assets/icons -t ./src/compiledIcons"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "i18next": "^13.1.2",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
@@ -50,6 +51,8 @@
       "import/extensions": "off",
       "object-curly-newline": "off",
       "object-shorthand": "off",
+      "no-underscore-dangle": "off",
+      "prefer-destructuring": "off",
       "max-len": [
         "off",
         {

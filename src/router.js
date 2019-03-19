@@ -27,6 +27,12 @@ export default new VueRouter({
     },
 
     {
+      path: '/gallery/:itemId',
+      name: 'gallery-details',
+      component: () => import(/* webpackChunkName: 'gallery-details' */ '@/pages/GalleryDetails.vue'),
+    },
+
+    {
       path: '/about',
       name: 'about',
       component: () => import(/* webpackChunkName: 'about' */ '@/pages/About.vue'),

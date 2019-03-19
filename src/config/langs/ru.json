@@ -21,5 +21,9 @@
 
     "btn_gallery": "Галерея",
     "btn_about": "О проекте"
+  },
+
+  "GALLERY": {
+    "readMore": "Подробнее"
   }
 }
