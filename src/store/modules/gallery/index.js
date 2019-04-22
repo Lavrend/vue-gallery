@@ -1,5 +1,5 @@
 /**
- * Articles Store Module
+ * Gallery Store Module
  */
 
 import state from './state';
@@ -8,7 +8,7 @@ import actions from './actions';
 import mutations from './mutations';
 
 export default {
-  name: 'articles',
+  name: 'gallery',
   namespaced: true,
   actions,
   getters,

@@ -6,12 +6,14 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --no-fix",
+    "lint:autofix": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit",
     "svg": "vsvg -s ./src/assets/icons -t ./src/compiledIcons"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "i18next": "^13.1.2",
+    "lodash": "^4.17.11",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
     "vue-svgicon": "^3.2.2",
@@ -53,6 +55,8 @@
       "object-shorthand": "off",
       "no-underscore-dangle": "off",
       "prefer-destructuring": "off",
+      "padded-blocks": "off",
+      "class-methods-use-this": "off",
       "max-len": [
         "off",
         {

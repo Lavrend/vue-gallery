@@ -1,7 +1,7 @@
-import Articles from './articles'
+import Gallery from './gallery';
 
 const ServerCore = {
-  articles: new Articles,
+  gallery: new Gallery(),
 };
 
 export default ServerCore;

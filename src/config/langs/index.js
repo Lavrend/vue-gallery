@@ -2,7 +2,7 @@ import ruLang from './ru';
 import enLang from './en';
 
 export default {
-  DEFAULT_LANG: 'ru',
+  DEFAULT_LANG: 'en',
 
   langs: {
     ru: {

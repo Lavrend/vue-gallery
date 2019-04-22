@@ -5,21 +5,16 @@
   )
     GalleryItem.gallery-list__item(
       v-for="item in items"
-      :class="getClasses(item.type)"
       :key="item._id"
       :id="item._id"
-      :type="item.type"
       :title="item.title"
       :description="item.description"
-      :text="item.text"
-      :image="getImageSrc(item)"
+      :image="item.imageSrc"
     )
 </template>
 
 <script>
 import { mapState } from 'vuex';
-
-import config from '@/config';
 import GalleryItem from '@/components/Gallery/GalleryItem';
 
 export default {
@@ -30,23 +25,9 @@ export default {
   },
 
   computed: {
-    ...mapState('articles', [
+    ...mapState('gallery', [
       'items',
     ]),
-  },
-
-  methods: {
-    getClasses(type) {
-      return {
-        [`gallery-list__item--${type}`]: type !== 'normal',
-      };
-    },
-
-    getImageSrc(item) {
-      return item.image === 0
-        ? `${config.IMAGE_URL}&random=${item._id}`
-        : `${config.IMAGE_URL}&image=${item.image}`;
-    },
   },
 };
 </script>
@@ -57,21 +38,28 @@ export default {
   margin: 0 auto;
 
   display: grid;
-  grid-auto-flow: dense;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: $indent-md;
+
+  user-select: none;
 
   &__item {
     height: 50vh;
   }
 
-  &__item--double {
-    grid-column: span 2;
+  @media screen and (min-width: 1024px){
+    &__item:nth-child(7n), &__item:nth-child(7n+4) {
+      grid-column: span 2;
+    }
   }
 
   // Tablet (viewport width <= 1024px)
   @media screen and (min-width: 480px) and (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
+
+    &__item:nth-child(3n) {
+      grid-column: span 2;
+    }
   }
 
   @media screen and (min-width: 480px) and (max-width: 680px) {
@@ -84,7 +72,7 @@ export default {
   @media screen and (max-width: 480px) {
     grid-template-columns: repeat(1, 1fr);
 
-    &__item--double {
+    &__item {
       grid-column: span 1;
     }
   }

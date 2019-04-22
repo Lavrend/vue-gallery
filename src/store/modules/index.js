@@ -1,8 +1,8 @@
 // All store modules
 import app from './app';
-import articles from './articles';
+import gallery from './gallery';
 
 export default {
   app,
-  articles,
+  gallery,
 };

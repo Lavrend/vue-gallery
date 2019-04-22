@@ -34,7 +34,7 @@ class BaseServer {
     const stringParams = keys
       .map(key => `${key}=${paramsObj[key]}`);
 
-    if(stringParams.length > 0) {
+    if (stringParams.length > 0) {
       return `?${stringParams.join('&')}`;
     }
 

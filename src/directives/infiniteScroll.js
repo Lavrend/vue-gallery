@@ -2,10 +2,9 @@
 import Vue from 'vue';
 
 let loading = false;
-let delay = 200;
 let offset = 0;
 
-const event = new Event('infinite-scroll');
+const event = new Event('loadMore');
 
 function scrollHandler() {
   if (loading) {
@@ -20,7 +19,6 @@ function scrollHandler() {
 Vue.directive('infinite-scroll', {
   inserted(el, binding) {
     loading = binding.value.loading || loading;
-    delay = binding.value.delay || delay;
     offset = binding.value.offset || offset;
 
     el.addEventListener('scroll', scrollHandler.bind(el));

@@ -24,6 +24,7 @@
   },
 
   "GALLERY": {
+    "emptyList": "The list is empty",
     "readMore": "Read more"
   }
 }

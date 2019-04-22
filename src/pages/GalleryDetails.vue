@@ -2,13 +2,14 @@
   section.page-gallery-details
     .page-gallery-details__wrapper(v-show="isReady")
       .page-gallery-details__header
-        div Back
+        div(@click="goBack")
+          | {{ backBtnLabel }}
         div {{ itemId }}
         div Edit
 
       .page-gallery-details__content
         img.page-gallery-details__image(
-          :src="`https://picsum.photos/1200/800?gravity=center&random=${itemId}`"
+          :src="currentItem.imageSrc"
           @load="imageOnload")
 
     .page-gallery-details__loading(v-if="!isReady")
@@ -28,23 +29,35 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('articles/items');
+    this.$store.dispatch('gallery/getItems')
+      .then(() => {
+        this.isReady = true;
+      });
   },
 
   data() {
     return {
       isReady: false,
+      hasFromGalleryRoute: false,
     };
   },
 
   computed: {
-    ...mapState('articles', [
+    ...mapState('gallery', [
       'items',
     ]),
 
-    // TODO
     itemId() {
       return String(this.$route.params.itemId) || 0;
+    },
+
+    currentItem() {
+      // TODO
+      return this.items.find(item => item._id === this.itemId) || {};
+    },
+
+    backBtnLabel() {
+      return this.hasFromGalleryRoute ? 'Back' : 'Gallery';
     },
   },
 
@@ -53,6 +66,22 @@ export default {
     imageOnload() {
       this.isReady = true;
     },
+
+    goBack() {
+      if (this.hasFromGalleryRoute) {
+        this.$router.back();
+      } else {
+        this.$router.push({
+          name: 'gallery',
+        });
+      }
+    },
+  },
+
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.hasFromGalleryRoute = from.name === 'gallery';
+    });
   },
 };
 </script>

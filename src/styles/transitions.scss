@@ -4,7 +4,7 @@ $dropUp: cubic-bezier(0, 1, 0, 1);
 .transition-fade {
   &-enter-active,
   &-leave-active {
-    transition: opacity .2s ease;
+    transition: opacity .2s ease !important;
   }
 
   &-enter,
@@ -21,7 +21,7 @@ $dropUp: cubic-bezier(0, 1, 0, 1);
 .transition-scale {
   &-enter-active,
   &-leave-active {
-    transition: transform .2s ease;
+    transition: transform .2s ease !important;
     overflow: hidden;
   }
 
@@ -36,14 +36,14 @@ $dropUp: cubic-bezier(0, 1, 0, 1);
   }
 
   &-move {
-    transition: transform 1s ease;
+    transition: transform .2s ease;
   }
 }
 
 .transition-zoom {
   &-enter-active,
   &-leave-active {
-    transition: all .3s ease;
+    transition: all .3s ease !important;
     transform-origin: center;
   }
 
@@ -63,7 +63,7 @@ $dropUp: cubic-bezier(0, 1, 0, 1);
 .transition-flip {
   &-enter-active,
   &-leave-active {
-    transition: transform .2s ease;
+    transition: transform .2s ease !important;
   }
 
   &-enter,

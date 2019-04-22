@@ -1,9 +1,9 @@
 /**
- * Getters for the Articles module
+ * Getters for the Gallery module
  */
 
 export default {
-  getItemsCount({ state }) {
+  itemsLength(state) {
     return state.items.length;
   },
 };

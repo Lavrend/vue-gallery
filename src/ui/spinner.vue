@@ -33,6 +33,7 @@ export default {
     width: 10%;
     height: 100%;
     background: $grey-7;
+    border-radius: 35%;
 
     animation: spinner-stretch 1.2s ease-in infinite;
   }

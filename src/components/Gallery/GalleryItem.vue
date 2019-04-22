@@ -1,11 +1,10 @@
 <template lang="pug">
   article.gallery-item
     transition(name="transition-scale" mode="out-in")
-      .gallery-item__content(v-show="isReady" @click="onClick")
+      .gallery-item__content(@click="onClick")
         img.gallery-item__image(
           :src="image"
-          :alt="`Image for article: ${title}`"
-          @load="imageOnload")
+          :alt="`Image: ${title}`")
 
         footer.gallery-item__summary
           h2.gallery-item__titile
@@ -13,43 +12,22 @@
           p.gallery-item__description
             | {{ description }}
 
-        span.gallery-item__read-more
+        .gallery-item__read-more
           | {{ $t('GALLERY.readMore') }}
-
-    .gallery-item__loading(v-if="!isReady")
-      uiSpinner.gallery-item__spinner
 </template>
 
 <script>
-import uiSpinner from '@/ui/spinner';
-
 export default {
   name: 'gallery-item',
 
-  components: {
-    uiSpinner,
-  },
-
   props: {
     id: String,
-    type: String,
     title: String,
     description: String,
-    text: String,
     image: String,
   },
 
-  data() {
-    return {
-      isReady: false,
-    };
-  },
-
   methods: {
-    imageOnload() {
-      this.isReady = true;
-    },
-
     onClick() {
       this.$router.push({
         name: 'gallery-details',
@@ -63,6 +41,8 @@ export default {
 </script>
 
 <style lang="scss">
+$borderRadius: 10px;
+
 .gallery-item {
   width: 100%;
   height: 100%;
@@ -72,7 +52,7 @@ export default {
     width: 100%;
     height: 100%;
     border: 2px solid $grey-8;
-    border-radius: 10px;
+    border-radius: $borderRadius;
 
     cursor: pointer;
     overflow: hidden;
@@ -116,38 +96,22 @@ export default {
   }
 
   &__read-more {
-    display: block;
     position: absolute;
     right: 0;
-    top: $indent-md;
+    top: 0;
     padding: $indent-sm $indent-md;
     background: rgba($red-5, 0.7);
+    border-bottom-left-radius: $borderRadius;
     font-size: 18px;
     color: $white;
-
-    user-select: none;
     visibility: hidden;
 
-    transition: all .2s ease;
+    transition: all .3s ease;
     transform: translateX(100%);
 
     @media screen and (max-width: 780px) {
       display: none;
     }
-  }
-
-  &__loading {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__spinner {
-    width: 70px;
-    height: 10%;
   }
 
   &:hover &__image {
